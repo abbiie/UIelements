@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UIActivity2nd</string>
+    <string-array name="Music_Option">
+        <item>For the Lover that I lost</item>
+        <item>Too good at goodbyes</item>
+        <item>Stay</item>
+    </string-array>
+</resources>

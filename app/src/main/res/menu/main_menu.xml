@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/GoSongs"
+    android:title="Songs">
+</item>
+    <item android:id="@+id/GoAlbum"
+        android:title="Album">
+    </item>
+    <item android:id="@+id/SongQueue"
+        android:title="Queue"
+        app:showAsAction="ifRoom">
+    </item>
+
+
+</menu>
