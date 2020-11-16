@@ -6,11 +6,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val songArray:Array<String> = arrayOf("stay with me", "Love goes", "Diamonds", "How do you Sleep", "I'm not the only one",
+            "Happier", "Dive", "Photograph", "perfect", "shape of you",
+            "At my wordst", "17", "Honesty", "Only a fool", "I know",
+            "Lasting Lover", "Train Wreck", "Safe Inside", "You", "Marine Parade")
+        val adapter  = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songArray)
+        val MList = findViewById<ListView>(R.id.songss)
+        MList.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -22,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.GoAlbum -> {
-                startActivity(Intent(this, Album::class.java))
+                startActivity(Intent(this, SongInfo::class.java))
                 true
             }
             R.id.GoSongs -> {

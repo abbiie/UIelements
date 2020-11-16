@@ -20,7 +20,7 @@ class Songs : AppCompatActivity() {
 
         MusicList.onItemClickListener = AdapterView.OnItemClickListener{parent, view, position, id ->
             Log.i("Position", "Position $position")
-            val intent = Intent(this, SongInfo::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Song", songArray[position])
             startActivity(intent)
         }
