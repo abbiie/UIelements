@@ -28,7 +28,7 @@ class SongInfo : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 spinner.adapter = adapter
             }
         spinner.onItemSelectedListener = this
-        findViewById<Button>(R.id.button).setOnClickListener { display() }
+//        findViewById<Button>(R.id.button).setOnClickListener { display() }
         val imageView = findViewById<ImageView>(R.id.MusicView)
         registerForContextMenu(imageView)
     }
@@ -44,7 +44,7 @@ class SongInfo : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
+        return when (item.itemId) {
             R.id.select -> {
                 Toast.makeText(this, "pick", Toast.LENGTH_SHORT).show()
                 true
@@ -52,14 +52,16 @@ class SongInfo : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             R.id.zoom -> {
                 Toast.makeText(this, "zoom", Toast.LENGTH_SHORT).show()
                 true
-            } else -> super.onContextItemSelected(item)
+            }
+            else -> super.onContextItemSelected(item)
         }
     }
-    fun display(){
-        val button = button()
-        val fm = supportFragmentManager
-        button.show(fm, "ignore_button")
-    }
+//    }
+//    fun display(){
+//        val button = button()
+//        val fm = supportFragmentManager
+//        button.show(fm, "ignore_button")
+//    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         Log.i("MusicList", "Slected Music at Position $position")
