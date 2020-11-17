@@ -15,22 +15,29 @@ class SongInfo : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(R.layout.activity_song_info)
 
         val Mtitle = intent.getStringExtra("Song")
-        findViewById<TextView>(R.id.SongTitle).text = Mtitle
+        findViewById<TextView>(R.id.sam).text = Mtitle
 
-        val spinner = findViewById<Spinner>(R.id.spinner)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.Music_Option,
-            android.R.layout.simple_list_item_1
-        )
-            .also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spinner.adapter = adapter
-            }
-        spinner.onItemSelectedListener = this
+//        val spinner = findViewById<Spinner>(R.id.spinner)
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.Music_Option,
+//            android.R.layout.simple_list_item_1
+//        )
+//            .also { adapter ->
+//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//                spinner.adapter = adapter
+//            }
+//        spinner.onItemSelectedListener = this
 //        findViewById<Button>(R.id.button).setOnClickListener { display() }
-        val imageView = findViewById<ImageView>(R.id.MusicView)
+        val imageView = findViewById<ImageView>(R.id.sams)
         registerForContextMenu(imageView)
+        val ed = findViewById<ImageView>(R.id.edS)
+        registerForContextMenu(ed)
+        val james= findViewById<ImageView>(R.id.jamesA)
+        registerForContextMenu(james)
+        val pink = findViewById<ImageView>(R.id.pinkS)
+        registerForContextMenu(pink)
+
     }
 
     override fun onCreateContextMenu(
@@ -45,17 +52,14 @@ class SongInfo : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.select -> {
-                Toast.makeText(this, "pick", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.zoom -> {
-                Toast.makeText(this, "zoom", Toast.LENGTH_SHORT).show()
+            R.id.Artist -> {
+                Toast.makeText(this, "The Artist", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onContextItemSelected(item)
         }
     }
+
 //    }
 //    fun display(){
 //        val button = button()

@@ -7,57 +7,59 @@
     tools:context=".SongInfo">
 
     <TextView
-        android:id="@+id/SongTitle"
+        android:id="@+id/sam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="63dp"
-        android:layout_marginTop="13dp"
-        android:text="Song Title:"
+        android:layout_marginTop="24dp"
+        android:text="Sam Smith"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/james"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MusicView" />
+        app:layout_constraintTop_toBottomOf="@+id/sams" />
 
     <TextView
-        android:id="@+id/songTitle2"
+        android:id="@+id/ed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
-        android:layout_marginBottom="20dp"
-        android:text="Song Title:"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="68dp"
+        android:text="Ed Sheeran"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/spinner4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/james"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="74dp"
-        android:text="Song Title:"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="60dp"
+        android:text="James Arthur"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/jamesA" />
 
     <TextView
-        android:id="@+id/songTitle3"
+        android:id="@+id/pink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="74dp"
-        android:layout_marginBottom="20dp"
-        android:text="Song Title:"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="68dp"
+        android:text="Pink Sweat$"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/MusicView"
-        android:layout_width="167dp"
-        android:layout_height="181dp"
+        android:id="@+id/sams"
+        android:layout_width="154dp"
+        android:layout_height="160dp"
         android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.11"
@@ -66,128 +68,43 @@
         app:srcCompat="@drawable/sam"
         tools:srcCompat="@drawable/sam" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="45dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="45dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="91dp"
-        android:layout_marginBottom="103dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="103dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="50dp"
-        android:text="Song List"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="31dp"
-        android:text="Song List"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/spinner3" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="45dp"
-        android:text="Song List"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="108dp"
-        android:text="Song List"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="167dp"
-        android:layout_height="181dp"
+        android:id="@+id/jamesA"
+        android:layout_width="154dp"
+        android:layout_height="160dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="29dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/MusicView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/sams"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/james"
+        tools:srcCompat="@drawable/james" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="167dp"
-        android:layout_height="181dp"
+        android:id="@+id/edS"
+        android:layout_width="156dp"
+        android:layout_height="175dp"
         android:layout_marginStart="27dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/songTitle2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/ed"
+        app:layout_constraintEnd_toStartOf="@+id/pinkS"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/ed"
+        tools:srcCompat="@drawable/ed" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="167dp"
-        android:layout_height="181dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/songTitle3"
+        android:id="@+id/pinkS"
+        android:layout_width="152dp"
+        android:layout_height="164dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/pink"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/pink"
+        tools:srcCompat="@drawable/pink" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

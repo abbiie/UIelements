@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/select"
-        android:title="select"></item>
+    <item android:id="@+id/Artist"
+        android:title="Artist"></item>
     <item android:id="@+id/zoom"
         android:title="zoom"></item>
+    <item android:id="@+id/AddQueue"
+        android:title="Add to Queue"></item>
 </menu>

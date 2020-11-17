@@ -3,11 +3,11 @@ package com.example.uiactivity2nd
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.ListView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val adapter  = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songArray)
         val MList = findViewById<ListView>(R.id.songss)
         MList.adapter = adapter
+        registerForContextMenu(MList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,6 +45,26 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreateContextMenu(
+            menu: ContextMenu?,
+            v: View?,
+            menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.msic_details, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.AddQueue-> {
+                Toast.makeText(this, "Added to Queue", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onContextItemSelected(item)
         }
     }
 }
