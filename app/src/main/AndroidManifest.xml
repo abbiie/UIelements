@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UIActivity2nd">
-        <activity android:name=".SongInfo"></activity>
+        <activity android:name=".Album"></activity>
         <activity android:name=".SongQueue" />
-        <activity android:name=".Songs" />
+        <activity android:name=".SongInfo" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
