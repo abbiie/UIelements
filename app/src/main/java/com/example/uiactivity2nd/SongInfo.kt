@@ -23,7 +23,7 @@ class SongInfo : AppCompatActivity() {
                 3 -> MusicList = MainActivity.songList.sliceArray(15..19)
             }
             findViewById<ImageView>(R.id.imageView).setImageResource(MainActivity.AlbumImg[set?.getInt("position")!!])
-            findViewById<TextView>(R.id.textView).setText(set.getString("name"))
+            findViewById<TextView>(R.id.AlbumTitle).setText(set.getString("name"))
 
             val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MusicList)
             val Music = findViewById<ListView>(R.id.ListofSongs)
