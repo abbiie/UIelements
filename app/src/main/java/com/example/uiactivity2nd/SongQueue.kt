@@ -1,4 +1,4 @@
-package com.example.uiactivity2nd
+package com.example.uielements
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

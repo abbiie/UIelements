@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongQueue">
+    tools:context=".QueueActivity">
 
     <ListView
         android:id="@+id/queues"
@@ -26,7 +26,7 @@
         android:textColor="#000000"
         android:textSize="43sp"
         android:textStyle="bold"
-        android:typeface="serif"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

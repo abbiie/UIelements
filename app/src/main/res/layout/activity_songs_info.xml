@@ -9,10 +9,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="241dp"
-        android:layout_height="227dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="314dp"
+        android:layout_height="244dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sam" />
@@ -30,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/ListofSongs"
         android:layout_width="413dp"
         android:layout_height="267dp"
@@ -39,7 +41,8 @@
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AlbumTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/AlbumTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

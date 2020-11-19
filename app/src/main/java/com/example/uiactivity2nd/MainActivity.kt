@@ -1,4 +1,4 @@
-package com.example.uiactivity2nd
+package com.example.uielements
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import android.view.ContextMenu
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
     private fun append(arr: Array<String>, element: String): Array<String>{
@@ -15,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         arr.add(element)
         return arr.toTypedArray()
     }
-
     companion object {
         var queue: Array<String> = emptyArray()
         val songList: Array<String> = arrayOf("stay with me", "Love goes", "Diamonds", "How do you Sleep", "I'm not the only one",
@@ -30,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
             val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songList)
-            val MList = findViewById<ListView>(R.id.songs)
+            val MList = findViewById<ListView>(R.id.msic)
             MList.adapter = adapter
             registerForContextMenu(MList)
 
@@ -49,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.GoSongs -> {
-                startActivity(Intent(this, SongInfo::class.java))
                 true
             }
             R.id.SongQueue -> {

@@ -6,24 +6,29 @@
     android:layout_width="205dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="20dp">
 
     <ImageView
-        android:id="@+id/sams"
-        android:layout_width="154dp"
-        android:layout_height="160dp"
+        android:id="@+id/imgView"
+        android:layout_width="215dp"
+        android:layout_height="210dp"
         app:srcCompat="@drawable/sam"
         tools:srcCompat="@drawable/sam" />
 
     <TextView
-        android:id="@+id/sam"
+        android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Sam Smith"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:typeface="serif"/>
+        android:typeface="serif" />
 
-
+    <TextView
+        android:id="@+id/art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Artist"
+        android:gravity="center"/>
 </LinearLayout>
