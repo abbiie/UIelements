@@ -19,48 +19,23 @@ class Album : AppCompatActivity() {
             setContentView(R.layout.activity_album)
 
             adapter = SongAdapter(this)
-            findViewById<GridView>(R.id.AlbumGrid).adapter = adapter
-        }
+            findViewById<GridView>(R.id.AlbumGrid).adapter = adapter }
 
-//    override fun onCreateContextMenu(
-//            menu: ContextMenu?,
-//            v: View?,
-//            menuInfo: ContextMenu.ContextMenuInfo?
-//    ) {
-//        super.onCreateContextMenu(menu, v, menuInfo)
-//        val inflater: MenuInflater = menuInflater
-//        inflater.inflate(R.menu.msic_details, menu)
-//    }
-//
-//    override fun onContextItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.Artist -> {
-//                Toast.makeText(this, "The Artist", Toast.LENGTH_SHORT).show()
-//                true
-//            }
-//            else -> super.onContextItemSelected(item)
-//        }
-//    }
      class SongAdapter : BaseAdapter {
          val myListSong = MainActivity.ArtistAlbum
          var context: Context? = null
-
          constructor(context: Context) : super() {
              this.context = context
          }
-
          override fun getCount(): Int {
              return myListSong.size
          }
-
          override fun getItem(position: Int): Any {
              return myListSong[position]
          }
-
          override fun getItemId(position: Int): Long {
              return position.toLong()
          }
-
          override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
              var inflater: LayoutInflater = LayoutInflater.from(context).context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
              val song = this.myListSong[position]
@@ -72,15 +47,9 @@ class Album : AppCompatActivity() {
                  intent.putExtra("position", position)
                  context!!.startActivity(intent)
              }
-
              myView.findViewById<ImageView>(R.id.imgView).setImageResource(MainActivity.AlbumImg[position])
              myView.findViewById<TextView>(R.id.txtView).text = song
-
-
              return myView
-
-
          }
      }
-
 }

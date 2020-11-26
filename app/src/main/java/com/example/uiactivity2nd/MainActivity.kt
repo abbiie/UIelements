@@ -36,15 +36,12 @@ class MainActivity : AppCompatActivity() {
             val MList = findViewById<ListView>(R.id.msic)
             MList.adapter = adapter
             registerForContextMenu(MList)
-
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.GoAlbum -> {
@@ -61,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
     override fun onCreateContextMenu(
             menu: ContextMenu?,
             v: View?,
@@ -71,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.msic_details, menu)
     }
-
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val details = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId) {
