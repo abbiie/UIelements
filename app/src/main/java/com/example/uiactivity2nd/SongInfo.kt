@@ -10,7 +10,6 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 
 class SongInfo : AppCompatActivity() {
-    private val set = intent.extras
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_songs_info)
@@ -25,10 +24,11 @@ class SongInfo : AppCompatActivity() {
 //                2 -> MusicList = MainActivity.songList.sliceArray(10..14)
 //                3 -> MusicList = MainActivity.songList.sliceArray(15..19)
 //            }
+             val set = intent.extras
             val albumName = set?.getString("name")
-            MyList = arrayOf(MainActivity.songList[set?.getInt("position")!!])
+            MyList = MainActivity.songList[set?.getInt("position")!!]
             findViewById<ImageView>(R.id.imageView).setImageResource(MainActivity.AlbumImg[set?.getInt("position")!!])
-            findViewById<TextView>(R.id.AlbumTitle).setText(set.getString("name"))
+            findViewById<TextView>(R.id.AlbumTitle).text=albumName
             adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyList)
             val Music = findViewById<ListView>(R.id.ListofSongs)
             Music.adapter = adapter
@@ -52,17 +52,18 @@ class SongInfo : AppCompatActivity() {
             inflater.inflate(R.menu.remove, menu)
         }
     override fun onContextItemSelected(item: MenuItem): Boolean {
+        val set = intent.extras
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
             R.id.RQueue ->{
                 val dialogBuilder = AlertDialog.Builder(this)
-                dialogBuilder.setMessage("Are you sure you want to remove this song song from this Album?")
+                dialogBuilder.setMessage("Are you sure you want to remove this song from this Album?")
                     .setCancelable(false)
                     .setPositiveButton("Yes", DialogInterface.OnClickListener{
                             _, _ ->
                         MainActivity.songList[set?.getInt("position")!!] =
-                        remove(arrayOf(MainActivity.songList[set.getInt("position")]), info.position).toString()
-                        MyList = arrayOf(MainActivity.songList[set.getInt("position")])
+                        remove(MainActivity.songList[set.getInt("position")], info.position)
+                        MyList = MainActivity.songList[set.getInt("position")]
                         adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyList)
                         val songList = findViewById<ListView>(R.id.ListofSongs)
                         songList.adapter = adapter })

@@ -21,10 +21,13 @@ class MainActivity : AppCompatActivity() {
     }
     companion object {
         var queue: Array<String> = emptyArray()
-        val songList: Array<String> = arrayOf("stay with me", "Love goes", "Diamonds", "How do you Sleep", "I'm not the only one",
-                "Happier", "Dive", "Photograph", "perfect", "shape of you",
-                "At my wordst", "17", "Honesty", "Only a fool", "I know",
-                "Lasting Lover", "Train Wreck", "Safe Inside", "You", "Marine Parade")
+        val songList = arrayOf(
+                arrayOf("stay with me", "Love goes", "Diamonds", "How do you Sleep", "I'm not the only one"),
+                arrayOf("Happier", "Dive", "Photograph", "perfect", "shape of you"),
+                arrayOf("At my wordst", "17", "Honesty", "Only a fool", "I know"),
+                arrayOf("Lasting Lover", "Train Wreck", "Safe Inside", "You", "Marine Parade")
+        )
+
         val ArtistAlbum = arrayOf("Sam Smith", "Ed Sheeran", "James Arthur", "Pink Sweat$")
         val AlbumImg = arrayOf(R.drawable.sam, R.drawable.ed, R.drawable.james, R.drawable.pink)
     }
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-            val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songList)
+            val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songList.flatten())
             val MList = findViewById<ListView>(R.id.msic)
             MList.adapter = adapter
             registerForContextMenu(MList)
@@ -71,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         val details = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId) {
             R.id.AddQueue-> {
-                queue = append(queue, songList[details.position])
+                queue = append(queue, songList.flatten()[details.position])
                 Toast.makeText(this, "Added to Queue", Toast.LENGTH_SHORT).show()
                 true
             }

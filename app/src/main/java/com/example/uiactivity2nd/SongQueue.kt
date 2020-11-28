@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -18,6 +19,7 @@ import android.widget.ListView
 import android.widget.Toast
 
 class SongQueue : AppCompatActivity() {
+
     private lateinit var NM : NotificationManager
     private lateinit var NC : NotificationChannel
     private lateinit var Build : Notification.Builder
@@ -46,6 +48,7 @@ class SongQueue : AppCompatActivity() {
             val addQueue = findViewById<ListView>(R.id.queues)
         addQueue.adapter = adapter
         registerForContextMenu(addQueue)
+        NM = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
@@ -67,13 +70,14 @@ class SongQueue : AppCompatActivity() {
                         NC.enableVibration(true)
                         NM.createNotificationChannel(NC)
 
-                        Build = Notification.Builder(this,NCid).setContentTitle("QUEUE EMPTY").setContentText("Add Songs to your Queue Now!")
-                            .setSmallIcon(R.drawable.ic_launcher_background)
+                        Build = Notification.Builder(this,NCid).setContentTitle("SONG QUEUE")
+                                .setContentText("Your Queue is Empty, Add songs now!")
+                            .setSmallIcon(R.drawable.exclamation_mark)
                             .setContentIntent(pendingIntent)
                     }else{
                         Build = Notification.Builder(this)
-                            .setContentTitle("Notifications Example")
-                            .setContentText("This is a notification message")
+                            .setContentTitle("Notification")
+                            .setContentText("Notification message")
                             .setSmallIcon(R.drawable.ic_launcher_background)
                             .setContentIntent(pendingIntent)
                     }
