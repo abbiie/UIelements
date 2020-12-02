@@ -1,4 +1,4 @@
-package com.example.uielements
+package com.example.uiactivity2nd
 
 import android.app.Notification
 import android.app.NotificationChannel

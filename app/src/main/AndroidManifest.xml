@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.uielements">
+    package="com.example.uiactivity2nd">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UIActivity2nd">
-        <activity android:name=".Album"></activity>
+        <activity android:name=".EditSong"></activity>
+        <activity android:name=".EditAlbum" />
+        <activity android:name=".AddSong" />
+        <activity android:name=".AddAlbum" />
+        <activity android:name=".Albums" />
         <activity android:name=".SongQueue" />
         <activity android:name=".SongInfo" />
         <activity android:name=".MainActivity">

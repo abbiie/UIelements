@@ -1,4 +1,4 @@
-package com.example.uielements
+package com.example.uiactivity2nd
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
