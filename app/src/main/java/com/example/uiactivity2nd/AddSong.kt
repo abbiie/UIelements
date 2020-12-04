@@ -18,21 +18,19 @@ class AddSong : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_song)
-
-        val databaseHander = SongsTableHandler(this)
+        val databaseHandler = SongsTableHandler(this)
 
         titleTxt = findViewById(R.id.addTitle)
         artistTxt = findViewById(R.id.addArtist)
         albumTxt = findViewById(R.id.addAlbum)
         addSongBtn = findViewById(R.id.SongBtn)
         addSongBtn.setOnClickListener {
-            //get the fields from the form
             val title = titleTxt.text.toString()
             val artist = artistTxt.text.toString()
             val album = albumTxt.text.toString()
 
             val song = Song(title = title, artist = artist, album = album)
-            if(databaseHander.add(song)){
+            if(databaseHandler.add(song)){
                 Toast.makeText(applicationContext, "Song was Added", Toast.LENGTH_LONG).show()
                 clearFields()
             }else{
@@ -40,38 +38,27 @@ class AddSong : AppCompatActivity() {
             }
         }
     }
-
     fun clearFields() {
         titleTxt.text.clear()
         artistTxt.text.clear()
-        albumTxt.text.clear()
-    }
-
-    //Add the options for the main menu
+        albumTxt.text.clear() }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-    //Method when an option in the main menu is selected
+        return true }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.SongQueue ->{
                 startActivity(Intent(this, SongQueue::class.java))
-                true
-            }
+                true }
             R.id.GoSongs ->{
                 startActivity(Intent(this, MainActivity::class.java))
-                true
-            }
+                true }
             R.id.GoAlbum ->{
                 startActivity(Intent(this, Albums::class.java))
-                true
-            }
+                true }
             R.id.AddToAlbum ->{
-                //startActivity(Intent(this, AddSong::class.java))
-                true
-            }
+                true }
             else -> super.onOptionsItemSelected(item)
         }
     }

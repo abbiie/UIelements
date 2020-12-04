@@ -13,8 +13,7 @@ class Albums : AppCompatActivity() {
         var adapter: AlbumAdapter? = null
         lateinit var albumsTableHandler: AlbumsTableHandler
         lateinit var albums: MutableList<Album>
-        lateinit var albumGrid: GridView
-    }
+        lateinit var albumGrid: GridView }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album)
@@ -39,24 +38,15 @@ class Albums : AppCompatActivity() {
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
-
-        //Add the menu items for the context menu
         inflater.inflate(R.menu.album_menu, menu)
     }
-
-    //Method when a context item is selected
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
             R.id.edit_album -> {
-                //get the song that was selected
                 val albumId = albums[info.position].id
-
-                //put it in an extra
                 val intent = Intent(applicationContext, EditAlbum::class.java)
                 intent.putExtra("albumId", albumId)
-
-                //start activity
                 startActivity(intent)
                 true
             }
@@ -67,25 +57,20 @@ class Albums : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
+        return true }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.SongQueue ->{
                 startActivity(Intent(this, SongQueue::class.java))
-                true
-            }
+                true }
             R.id.GoSongs ->{
                 startActivity(Intent(this, MainActivity::class.java))
-                true
-            }
+                true }
             R.id.GoAlbum->{
-                true
-            }
+                true }
             R.id.add ->{
                 startActivity(Intent(this, AddSong::class.java))
-                true
-            }
+                true }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -94,20 +79,13 @@ class Albums : AppCompatActivity() {
         var context: Context? = null
         constructor(context: Context, albumList: MutableList<Album>) : super() {
             this.context = context
-            this.myListSong = albumList
-        }
-
+            this.myListSong = albumList }
         override fun getCount(): Int {
-            return myListSong.size
-        }
-
+            return myListSong.size }
         override fun getItem(position: Int): Any {
-            return myListSong[position]
-        }
-
+            return myListSong[position] }
         override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
+            return position.toLong() }
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
             var inflater: LayoutInflater = LayoutInflater.from(context).context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

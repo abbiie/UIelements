@@ -36,31 +36,25 @@ class AddAlbum : AppCompatActivity() {
     }
     fun clearFields() {
         titleTxt.text.clear()
-        releaseDateTxt.text.clear()
-    }
+        releaseDateTxt.text.clear() }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
+        return true }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.SongQueue ->{
                 startActivity(Intent(this, SongQueue::class.java))
-                true
-            }
+                true }
             R.id.GoSongs ->{
                 startActivity(Intent(this, MainActivity::class.java))
-                true
-            }
+                true }
             R.id.GoAlbum ->{
                 startActivity(Intent(this, Album::class.java))
-                true
-            }
+                true }
             R.id.AddToAlbum ->{
                 startActivity(Intent(this, AddSong::class.java))
-                true
-            }
+                true }
             else -> super.onOptionsItemSelected(item)
         }
     }

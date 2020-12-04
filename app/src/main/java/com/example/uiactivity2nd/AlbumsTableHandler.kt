@@ -17,37 +17,22 @@ class AlbumsTableHandler(var context: Context): SQLiteOpenHelper(context, Albums
         private const val TABLE_NAME = "songs"
         private const val COL_ID = "id"
         private const val COL_TITLE = "title"
-        private const val COL_RELEASE_DATE = "release_date"
-    }
-
+        private const val COL_RELEASE_DATE = "release_date" }
     override fun onCreate(db: SQLiteDatabase?) {
-        //define the query
         val query = "CREATE TABLE "+TABLE_NAME+" ("+COL_ID+" INTEGER PRIMARY KEY, "+COL_TITLE+" TEXT, "+ COL_RELEASE_DATE+" TEXT)"
-
-        //execute
-        db?.execSQL(query)
-    }
-
+        db?.execSQL(query) }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS"+ TABLE_NAME)
-        onCreate(db)
-    }
-
+        onCreate(db) }
     fun add(album: Album): Boolean{
-        //get database
         val database = this.writableDatabase
-        //set the ContentValues
         val contentValues = ContentValues()
         contentValues.put(COL_TITLE, album.title)
         contentValues.put(COL_RELEASE_DATE, album.releaseDate)
-        //insert
         var result = database.insert(TABLE_NAME, null, contentValues)
-        //check for result
         if(result == (0).toLong()){
-            return false
-        }
-        return true
-    }
+            return false }
+        return true }
 
     fun read(): MutableList<Album> {
         val albumList: MutableList<Album> = ArrayList<Album>()
@@ -57,9 +42,7 @@ class AlbumsTableHandler(var context: Context): SQLiteOpenHelper(context, Albums
         try {
             cursor = database.rawQuery(query, null)
         }catch(e: SQLiteException){
-            return albumList
-        }
-
+            return albumList }
         var id: Int
         var title: String
         var releaseDate: String
@@ -94,33 +77,23 @@ class AlbumsTableHandler(var context: Context): SQLiteOpenHelper(context, Albums
             id = cursor.getInt(cursor.getColumnIndex(COL_ID))
             title = cursor.getString(cursor.getColumnIndex(COL_TITLE))
             releaseDate = cursor.getString(cursor.getColumnIndex(COL_RELEASE_DATE))
-            album = Album(id, title, releaseDate)
-        }
-        return album
-    }
+            album = Album(id, title, releaseDate) }
+        return album }
 
     fun update(album: Album): Boolean{
-        //get database
         val database = this.writableDatabase
-        //set the ContentValues
         val contentValues = ContentValues()
         contentValues.put(COL_TITLE, album.title)
         contentValues.put(COL_RELEASE_DATE, album.releaseDate)
-        //insert
         var result = database.update(TABLE_NAME, contentValues, "id="+album.id, null)
-        //check for result
         if(result == 0){
-            return false
-        }
+            return false }
         return true
     }
-
     fun delete(album: Album): Boolean{
         val database = this.writableDatabase
         val result = database.delete(TABLE_NAME, "id = ${album.id}", null)
         if(result == 0){
-            return false
-        }
-        return true
-    }
+            return false }
+        return true }
 }
