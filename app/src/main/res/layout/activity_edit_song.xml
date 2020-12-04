@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/e"
     tools:context=".EditSong">
 
 
     <Button
-        android:id="@+id/editSongBtn"
+        android:id="@+id/editBtn"
         android:layout_width="197dp"
         android:layout_height="72dp"
         android:text="Update Song"
         android:textSize="18sp"
-        app:backgroundTint="#0C00B1"
+        app:backgroundTint="#B20C00B1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTitleTxt"
+        app:layout_constraintTop_toTopOf="@+id/editTitle"
         app:layout_constraintVertical_bias="0.616" />
 
     <EditText
-        android:id="@+id/editTitleTxt"
+        android:id="@+id/editTitle"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="136dp"
@@ -34,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editArtistTxt"
+        android:id="@+id/editArtist"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="40dp"
@@ -44,10 +45,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitleTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
     <EditText
-        android:id="@+id/editAlbumTxt"
+        android:id="@+id/editAlbum"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="36dp"
@@ -57,5 +58,5 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editArtistTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/editArtist" />
 </androidx.constraintlayout.widget.ConstraintLayout>

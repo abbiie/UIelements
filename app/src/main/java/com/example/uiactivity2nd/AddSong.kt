@@ -21,10 +21,10 @@ class AddSong : AppCompatActivity() {
 
         val databaseHander = SongsTableHandler(this)
 
-        titleTxt = findViewById(R.id.addTitleTxt)
-        artistTxt = findViewById(R.id.addArtistTxt)
-        albumTxt = findViewById(R.id.addAlbumTxt)
-        addSongBtn = findViewById(R.id.addSongBtn)
+        titleTxt = findViewById(R.id.addTitle)
+        artistTxt = findViewById(R.id.addArtist)
+        albumTxt = findViewById(R.id.addAlbum)
+        addSongBtn = findViewById(R.id.SongBtn)
         addSongBtn.setOnClickListener {
             //get the fields from the form
             val title = titleTxt.text.toString()

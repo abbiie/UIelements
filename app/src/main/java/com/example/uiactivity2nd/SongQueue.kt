@@ -6,11 +6,13 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
@@ -56,7 +58,7 @@ class SongQueue : AppCompatActivity() {
             R.id.RQueue ->{
                 MainActivity.queue = remove(MainActivity.queue, info.position)
                 var adapter:ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.queue)
-                adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.queue)
+                //adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.queue)
                 val newQueue = findViewById<ListView>(R.id.queues)
                 newQueue.adapter = adapter
                 Toast.makeText(this, "Song removed from Queue", Toast.LENGTH_SHORT).show()
@@ -73,18 +75,50 @@ class SongQueue : AppCompatActivity() {
                         Build = Notification.Builder(this,NCid).setContentTitle("SONG QUEUE")
                                 .setContentText("Your Queue is Empty, Add songs now!")
                             .setSmallIcon(R.drawable.exclamation_mark)
+                                .setLargeIcon(BitmapFactory.decodeResource(this.resources,
+                                        R.drawable.ic_launcher_background))
                             .setContentIntent(pendingIntent)
                     }else{
                         Build = Notification.Builder(this)
                             .setContentTitle("Notification")
                             .setContentText("Notification message")
                             .setSmallIcon(R.drawable.ic_launcher_background)
+                                .setLargeIcon(BitmapFactory.decodeResource(this.resources,
+                                        R.drawable.ic_launcher_background))
                             .setContentIntent(pendingIntent)
                     }
                     NM.notify(1234,Build.build())
                 }
                 return true
             }
-            else -> super.onContextItemSelected(item) }
+            else -> super.onContextItemSelected(item)
+        }
+
+} override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    val inflater = menuInflater
+    inflater.inflate(R.menu.main_menu, menu)
+    return true
+}
+//Method when an option in the main menu is selected
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId){
+        R.id.SongQueue ->{
+            //startActivity(Intent(this, QueueActivity::class.java))
+            true
+        }
+        R.id.GoSongs ->{
+            startActivity(Intent(this, MainActivity::class.java))
+            true
+        }
+        R.id.GoAlbum ->{
+            startActivity(Intent(this, Albums::class.java))
+            true
+        }
+        R.id.AddToAlbum ->{
+            startActivity(Intent(this, AddSong::class.java))
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
+}
 }

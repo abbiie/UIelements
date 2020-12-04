@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/f"
     tools:context=".AddSong">
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="56dp"
         android:text="Add Song"
         android:textAllCaps="false"
@@ -20,24 +19,25 @@
         android:textSize="45sp"
         android:textStyle="bold"
         android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addSongBtn"
+        android:id="@+id/SongBtn"
         android:layout_width="109dp"
         android:layout_height="61dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="Add"
         android:textSize="18sp"
-        app:backgroundTint="#000000"
+        app:backgroundTint="#BAFF0066"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addAlbum" />
 
     <EditText
-        android:id="@+id/addTitleTxt"
+        android:id="@+id/addTitle"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="68dp"
@@ -47,10 +47,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/Add" />
 
     <EditText
-        android:id="@+id/addArtistTxt"
+        android:id="@+id/addArtist"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
@@ -60,10 +60,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTitleTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/addTitle" />
 
     <EditText
-        android:id="@+id/addAlbumTxt"
+        android:id="@+id/addAlbum"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
@@ -73,6 +73,6 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addArtistTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/addArtist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

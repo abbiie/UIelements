@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.uiactivity2nd.models.Album
-import com.example.uiactivity2nd.models.Song
 
 class EditAlbum : AppCompatActivity() {
     lateinit var editAlbumBtn: Button
@@ -29,9 +27,9 @@ class EditAlbum : AppCompatActivity() {
         val album = databaseHander.readOne(albumId)
 
         //set the edittext values based on the record
-        titleTxt = findViewById(R.id.editAlbumTitleTxt)
-        releaseDateTxt = findViewById(R.id.editReleaseDateTxt)
-        editAlbumBtn = findViewById(R.id.editAlbumBtn)
+        titleTxt = findViewById(R.id.AlbumT)
+        releaseDateTxt = findViewById(R.id.ReleaseDate)
+        editAlbumBtn = findViewById(R.id.AlbumBtn)
 
         titleTxt.setText(album.title)
         releaseDateTxt.setText(album.releaseDate)

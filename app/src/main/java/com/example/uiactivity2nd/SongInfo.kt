@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.example.uiactivity2nd.models.Song
 
 class SongInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,17 +26,20 @@ class SongInfo : AppCompatActivity() {
 //                3 -> MusicList = MainActivity.songList.sliceArray(15..19)
 //            }
              val set = intent.extras
-            val albumName = set?.getString("name")
-            MyList = MainActivity.songList[set?.getInt("position")!!]
-            findViewById<ImageView>(R.id.imageView).setImageResource(MainActivity.AlbumImg[set?.getInt("position")!!])
-            findViewById<TextView>(R.id.AlbumTitle).text=albumName
-            adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyList)
+            val albumName = set?.getString("albumId")
+            MyList = Albums.albums[albumId!!].albumSongs
+            findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.alum)
+            findViewById<TextView>(R.id.AlbumTitle).text=Albums.albums[albumId!!].title
+
+            adapter = MainActivity.AdapterList(applicationContext, MyList)
             val Music = findViewById<ListView>(R.id.ListofSongs)
             Music.adapter = adapter
             registerForContextMenu(Music)
         }
-        private lateinit var adapter: ArrayAdapter<String>
-        private lateinit var MyList: Array<String>
+        private lateinit var adapter: MainActivity.AdapterList
+        private lateinit var MyList: MutableList<Song>
+        private var albumId = 0
+
         private fun remove(arr: Array<String>, item: Int): Array<String>{
             if(item < 0 || item >= arr.size){
                 return arr }
@@ -61,10 +65,9 @@ class SongInfo : AppCompatActivity() {
                     .setCancelable(false)
                     .setPositiveButton("Yes", DialogInterface.OnClickListener{
                             _, _ ->
-                        MainActivity.songList[set?.getInt("position")!!] =
-                        remove(MainActivity.songList[set.getInt("position")], info.position)
-                        MyList = MainActivity.songList[set.getInt("position")]
-                        adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyList)
+                        Albums.albums[albumId].albumSongs.removeAt(info.position)
+                        MyList = Albums.albums[albumId!!].albumSongs
+                        adapter = MainActivity.AdapterList(applicationContext, MyList)
                         val songList = findViewById<ListView>(R.id.ListofSongs)
                         songList.adapter = adapter })
                     .setNegativeButton("No", DialogInterface.OnClickListener{

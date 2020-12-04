@@ -19,8 +19,8 @@ class AddAlbum : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_album)
         val databaseHandler = AlbumsTableHandler(this)
-        titleTxt = findViewById(R.id.addAlbumTitleTxt)
-        releaseDateTxt = findViewById(R.id.addReleaseDateTxt)
+        titleTxt = findViewById(R.id.AlbumTitleTxt)
+        releaseDateTxt = findViewById(R.id.ReleaseDateTxt)
         addAlbumBtn = findViewById(R.id.addAlbumBtn)
         addAlbumBtn.setOnClickListener {
             val title = titleTxt.text.toString()

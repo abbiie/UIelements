@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/d"
     tools:context=".AddAlbum">
 
 
@@ -15,15 +16,15 @@
         android:layout_marginBottom="16dp"
         android:text=" Add Album"
         android:textSize="18sp"
-        app:backgroundTint="#11A5BF"
+        app:backgroundTint="#C11179BF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addReleaseDateTxt"
+        app:layout_constraintTop_toBottomOf="@+id/ReleaseDateTxt"
         app:layout_constraintVertical_bias="0.221" />
 
     <EditText
-        android:id="@+id/addAlbumTitleTxt"
+        android:id="@+id/AlbumTitleTxt"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="148dp"
@@ -36,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/addReleaseDateTxt"
+        android:id="@+id/ReleaseDateTxt"
         android:layout_width="257dp"
         android:layout_height="45dp"
         android:layout_marginTop="50dp"
@@ -46,6 +47,6 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAlbumTitleTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/AlbumTitleTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

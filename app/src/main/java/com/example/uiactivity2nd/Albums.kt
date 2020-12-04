@@ -27,11 +27,11 @@ class Albums : AppCompatActivity() {
         albumGrid.onItemClickListener = object: AdapterView.OnItemClickListener{
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val intent = Intent(applicationContext, SongInfo::class.java)
-                intent.putExtra("position", position)
+                intent.putExtra("albumId", position)
                 startActivity(intent)
             }
         }
-        val addBtn: View = findViewById(R.id.addAlbumFab)
+        val addBtn: View = findViewById(R.id.AddAlbuum)
         addBtn.setOnClickListener {
             startActivity(Intent(this, AddAlbum::class.java))
         }
@@ -64,16 +64,11 @@ class Albums : AppCompatActivity() {
         }
     }
 
-
-    //OPTIONS MENU
-    //
-    //Add the options for the main menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
     }
-    //Method when an option in the main menu is selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.SongQueue ->{
@@ -95,10 +90,11 @@ class Albums : AppCompatActivity() {
         }
     }
     class AlbumAdapter : BaseAdapter {
-        val myListSong = MainActivity.ArtistAlbum
+        var myListSong: MutableList<Album>
         var context: Context? = null
         constructor(context: Context, albumList: MutableList<Album>) : super() {
             this.context = context
+            this.myListSong = albumList
         }
 
         override fun getCount(): Int {
@@ -123,7 +119,7 @@ class Albums : AppCompatActivity() {
                 intent.putExtra("name", song.toString())
                 context!!.startActivity(intent) }
             myView.findViewById<ImageView>(R.id.imgView).setImageResource(MainActivity.AlbumImg[position])
-            myView.findViewById<TextView>(R.id.txtView).text = song
+            myView.findViewById<TextView>(R.id.txtView).text = song.toString()
             return myView
         }
     }

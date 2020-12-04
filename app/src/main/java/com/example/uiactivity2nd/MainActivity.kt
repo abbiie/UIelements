@@ -1,17 +1,16 @@
 package com.example.uiactivity2nd
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.uiactivity2nd.models.Song
 import com.google.android.material.snackbar.Snackbar
 
@@ -33,17 +32,48 @@ class MainActivity : AppCompatActivity() {
         val ArtistAlbum = arrayOf("Sam Smith", "Ed Sheeran", "James Arthur", "Pink Sweat$")
         val AlbumImg = arrayOf(R.drawable.sam, R.drawable.ed, R.drawable.james, R.drawable.pink)
 
-        lateinit var adapter: ArrayAdapter<Song>
+        lateinit var adapter: AdapterList
         lateinit var songs: MutableList<Song>
         lateinit var songsTableHandler: SongsTableHandler
         lateinit var SList: ListView
     }
+    class AdapterList(context: Context, songs: MutableList<Song>): BaseAdapter(){
+        private val mContext: Context = context
+        private val mSongs: MutableList<Song> = songs
+
+        override fun getCount(): Int {
+            return mSongs.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return mSongs[position]
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            val layoutInflater = LayoutInflater.from(mContext)
+            val rowMain = layoutInflater.inflate(R.layout.view, parent, false)
+
+            val rowMainDescTxt = rowMain.findViewById<TextView>(R.id.ArtistAndAlbum)
+            val rowMainSongTxt = rowMain.findViewById<TextView>(R.id.Title)
+            rowMainSongTxt.text = mSongs[position].title
+            val desc = "${mSongs[position].artist} - ${mSongs[position].album}"
+            rowMainDescTxt.text = desc
+
+            return rowMain
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         songsTableHandler = SongsTableHandler(this)
         songs = songsTableHandler.read()
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,songs)
+        adapter = AdapterList(this, songs)
         SList = findViewById<ListView>(R.id.msic)
         SList.adapter = adapter
         registerForContextMenu(SList)
@@ -60,31 +90,47 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu_menu, menu)
+        inflater.inflate(R.menu.msic_details, menu)
     }
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
-            R.id.add_to_queue ->{
+            R.id.AddQueue ->{
                 queue = add(queue, songs[info.position].toString())
                 val snackbar = Snackbar.make(findViewById<ListView>(R.id.msic), "${songs[info.position].toString()} moved to queue", Snackbar.LENGTH_LONG)
                 snackbar.setAction("GO TO QUEUE") { startActivity(Intent(applicationContext, SongQueue::class.java)) }
                 snackbar.show()
                 return true
             }
-            R.id.remove_from_queue ->{
-                queue = remove(queue, songs[info.position].toString())
-                Toast.makeText(this, "${songs[info.position].toString()} removed from Queue", Toast.LENGTH_SHORT).show()
-                return true
+            R.id.AddToAlbum ->{
+                Albums.albumsTableHandler = AlbumsTableHandler(this)
+                Albums.albums = Albums.albumsTableHandler.read()
+
+                val arrayAdapt: ArrayAdapter<String> = ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1)
+                for(album in Albums.albums){
+                    arrayAdapt.add(album.title)
+                }
+
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setTitle("Choose an Album")
+                dialogBuilder.setAdapter(arrayAdapt) { _, which ->
+                    Albums.albums[which].albumSongs.add(songs[info.position])
+                    Toast.makeText(applicationContext, "${Albums.albums[which].albumSongs.size} Song has been added to album.", Toast.LENGTH_LONG).show()
+                }
+                dialogBuilder.setNegativeButton("Cancel", null)
+                val dialog: AlertDialog = dialogBuilder.create()
+                dialog.show()
+
+                 true
             }
-            R.id.Edit_song ->{
+            R.id.ESong ->{
                 val songId = songs[info.position].id
                 val intent = Intent(applicationContext, EditSong::class.java)
                 intent.putExtra("songId", songId)
                 startActivity(intent)
                 true
             }
-            R.id.Delete_song ->{
+            R.id.DSong ->{
                 val song = songs[info.position]
                 if(songsTableHandler.delete(song)){
                     songs.removeAt(info.position)

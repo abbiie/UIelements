@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -23,10 +22,10 @@ class EditSong : AppCompatActivity() {
         val databaseHandler = SongsTableHandler(this)
         val song = databaseHandler.readOne(songId)
 
-        titleTxt = findViewById(R.id.editTitleTxt)
-        artistTxt = findViewById(R.id.editArtistTxt)
-        albumTxt = findViewById(R.id.editAlbumTxt)
-        editSongBtn = findViewById(R.id.editSongBtn)
+        titleTxt = findViewById(R.id.editTitle)
+        artistTxt = findViewById(R.id.editArtist)
+        albumTxt = findViewById(R.id.editAlbum)
+        editSongBtn = findViewById(R.id.editBtn)
 
         titleTxt.setText(song.title)
         artistTxt.setText(song.artist)
@@ -40,7 +39,7 @@ class EditSong : AppCompatActivity() {
             val newSong = Song(id = songId, title = title, artist = artist, album = album)
             if(databaseHandler.update(newSong)){
                 Toast.makeText(applicationContext, "Song was Updated", Toast.LENGTH_LONG).show()
-                MainActivity.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, MainActivity.songs)
+                MainActivity.adapter = MainActivity.AdapterList(this, MainActivity.songs)
                 MainActivity.SList.adapter = MainActivity.adapter
                 clearFields()
             }else{

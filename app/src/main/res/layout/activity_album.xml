@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/asdf"
+    android:background="@drawable/b"
     tools:context=".Albums">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addAlbumFab"
+        android:id="@+id/AddAlbuum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="#9E533F9F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />

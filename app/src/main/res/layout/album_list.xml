@@ -28,7 +28,7 @@
         android:id="@+id/art"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Artist"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="Album Title"
+        android:textSize="15sp" />
 </LinearLayout>
