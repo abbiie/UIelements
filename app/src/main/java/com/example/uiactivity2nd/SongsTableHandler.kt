@@ -23,10 +23,7 @@ class SongsTableHandler(var context: Context): SQLiteOpenHelper(context, DATABAS
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        //define the query
         val query = "CREATE TABLE "+TABLE_NAME+" ("+COL_ID+" INTEGER PRIMARY KEY, "+COL_TITLE+" TEXT, "+COL_ARTIST+" TEXT, "+COL_ALBUM+" TEXT)"
-
-        //execute
         db?.execSQL(query)
     }
 
@@ -36,16 +33,12 @@ class SongsTableHandler(var context: Context): SQLiteOpenHelper(context, DATABAS
     }
 
     fun add(song: Song): Boolean{
-        //get database
         val database = this.writableDatabase
-        //set the ContentValues
         val contentValues = ContentValues()
         contentValues.put(COL_TITLE, song.title)
         contentValues.put(COL_ARTIST, song.artist)
         contentValues.put(COL_ALBUM, song.album)
-        //insert
         var result = database.insert(TABLE_NAME, null, contentValues)
-        //check for result
         if(result == (0).toLong()){
             return false
         }
@@ -107,28 +100,20 @@ class SongsTableHandler(var context: Context): SQLiteOpenHelper(context, DATABAS
     }
 
     fun update(song: Song): Boolean{
-        //get database
         val database = this.writableDatabase
-        //set the ContentValues
         val contentValues = ContentValues()
         contentValues.put(COL_TITLE, song.title)
         contentValues.put(COL_ARTIST, song.artist)
         contentValues.put(COL_ALBUM, song.album)
-        //insert
         var result = database.update(TABLE_NAME, contentValues, "id="+song.id, null)
-        //check for result
         if(result == 0){
-            return false
-        }
-        return true
-    }
+            return false }
+        return true }
 
     fun delete(song: Song): Boolean{
         val database = this.writableDatabase
         val result = database.delete(TABLE_NAME, "id = ${song.id}", null)
         if(result == 0){
-            return false
-        }
-        return true
-    }
+            return false }
+        return true }
 }

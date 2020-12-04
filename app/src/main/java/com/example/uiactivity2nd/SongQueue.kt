@@ -99,25 +99,19 @@ class SongQueue : AppCompatActivity() {
     inflater.inflate(R.menu.main_menu, menu)
     return true
 }
-//Method when an option in the main menu is selected
 override fun onOptionsItemSelected(item: MenuItem): Boolean {
     return when (item.itemId){
         R.id.SongQueue ->{
-            //startActivity(Intent(this, QueueActivity::class.java))
-            true
-        }
+            true }
         R.id.GoSongs ->{
             startActivity(Intent(this, MainActivity::class.java))
-            true
-        }
+            true }
         R.id.GoAlbum ->{
             startActivity(Intent(this, Albums::class.java))
-            true
-        }
+            true }
         R.id.AddToAlbum ->{
             startActivity(Intent(this, AddSong::class.java))
-            true
-        }
+            true }
         else -> super.onOptionsItemSelected(item)
     }
 }

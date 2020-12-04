@@ -31,11 +31,9 @@ class EditSong : AppCompatActivity() {
         artistTxt.setText(song.artist)
         albumTxt.setText(song.album)
         editSongBtn.setOnClickListener {
-            //set the fields from the form
             val title = titleTxt.text.toString()
             val artist = artistTxt.text.toString()
             val album = albumTxt.text.toString()
-
             val newSong = Song(id = songId, title = title, artist = artist, album = album)
             if(databaseHandler.update(newSong)){
                 Toast.makeText(applicationContext, "Song was Updated", Toast.LENGTH_LONG).show()
@@ -43,15 +41,13 @@ class EditSong : AppCompatActivity() {
                 MainActivity.SList.adapter = MainActivity.adapter
                 clearFields()
             }else{
-                Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
-            }
+                Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show() }
         }
     }
     fun clearFields() {
         titleTxt.text.clear()
         artistTxt.text.clear()
-        albumTxt.text.clear()
-    }
+        albumTxt.text.clear() }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
@@ -61,16 +57,13 @@ class EditSong : AppCompatActivity() {
         return when (item.itemId){
             R.id.SongQueue ->{
                 startActivity(Intent(this, SongQueue::class.java))
-                true
-            }
+                true }
             R.id.GoSongs ->{
                 startActivity(Intent(this, MainActivity::class.java))
-                true
-            }
+                true }
             R.id.GoAlbum ->{
                 startActivity(Intent(this, Albums::class.java))
-                true
-            }
+                true }
             else -> super.onOptionsItemSelected(item)
         }
     }
